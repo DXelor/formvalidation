@@ -49,7 +49,7 @@ class LoginPage extends StatelessWidget {
                 SizedBox(
                   height: 60.0,
                 ),
-                _loginBotones()
+                _loginBotones(bloc)
               ],
             ),
           ),
@@ -108,14 +108,22 @@ class LoginPage extends StatelessWidget {
         });
   }
 
-  Widget _loginBotones() {
-    return ElevatedButton(
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-        child: Text('Ingresar'),
-      ),
-      onPressed: () {},
-    );
+  Widget _loginBotones(LoginBloc bloc) {
+    //formValidStream
+    //snapshot.hasData
+    //true ? algo si true : algo si false
+
+    return StreamBuilder(
+        stream: bloc.formValidStream,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return ElevatedButton(
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+              child: Text('Ingresar'),
+            ),
+            onPressed: snapshot.hasData ? () {} : null,
+          );
+        });
   }
 
   Widget _crearFondo(BuildContext context) {
