@@ -121,9 +121,17 @@ class LoginPage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
               child: Text('Ingresar'),
             ),
-            onPressed: snapshot.hasData ? () {} : null,
+            onPressed: snapshot.hasData ? () => _login(bloc, context) : null,
           );
         });
+  }
+
+  _login(LoginBloc bloc, BuildContext context) {
+    print('===============================');
+    print('Email: ${bloc.email}');
+    print('Password: ${bloc.password}');
+    print('===============================');
+    Navigator.pushNamed(context, 'home');
   }
 
   Widget _crearFondo(BuildContext context) {
