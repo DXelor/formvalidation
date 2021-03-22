@@ -77,7 +77,8 @@ class LoginPage extends StatelessWidget {
                 ),
                 hintText: 'tucorreo@mail.com',
                 labelText: 'Correo Electronico',
-                counterText: snapshot.data),
+                counterText: snapshot.data,
+                errorText: snapshot.error),
             onChanged: bloc.changeEmail,
           ),
         );
@@ -93,14 +94,15 @@ class LoginPage extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: TextField(
               obscureText: true,
-              keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                   icon: Icon(
                     Icons.lock_outline,
                     color: Colors.deepPurple,
                   ),
                   labelText: 'Contraseña',
-                  counterText: snapshot.data),
+                  counterText: snapshot.data,
+                  errorText: snapshot.error),
+              onChanged: bloc.changePassword,
             ),
           );
         });
